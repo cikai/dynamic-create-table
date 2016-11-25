@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<style type="text/css">
+		td {
+			padding-right: 20px;
+		}	
+	</style>
+
+	<script type="text/javascript">
+
+		drawTable(node, sr, sc);
+
+		var node = {"text":"aaa"};
+		var sr = 1;
+		var sc = 1;
+
+		function create(node, sr, sc) {
+			drawTable(node, sr, sc);
+			for (i=0; i<node.children.length; i++) {
+				create(node.children, sr, sc+1);
+			}
+			for (i=0; i<node.children.sublings.length; i++) {
+				create(node.children.sublings, sr, sc+1);
+			}
+		}
+
+		function drawTable(node, sr, sc) {
+			var table = document.createElement("table");
+			table.border = 1;
+			table.width = "100%";
+			
+			var tbody = document.createElement("tbody");
+			table.appendChild(tbody);
+
+			tbody.insertRow(0);
+			tbody.rows[0].insertCell(0);
+			tbody.rows[0].cells[0].appendChild(document.createTextNode("1-1"));
+			tbody.rows[0].insertCell(1);
+			tbody.rows[0].cells[1].appendChild(document.createTextNode("1-1-1"));
+
+			tbody.insertRow(1);
+			tbody.rows[1].insertCell(0);
+			tbody.rows[1].insertCell(1);
+			tbody.rows[1].cells[1].appendChild(document.createTextNode("1-1-2"));
+
+			tbody.insertRow(2);
+			tbody.rows[2].insertCell(0);
+			tbody.rows[2].cells[0].appendChild(document.createTextNode("2-2"));
+			tbody.rows[2].insertCell(1);
+			tbody.rows[2].cells[1].appendChild(document.createTextNode("2-2-1"));
+
+			document.body.appendChild(table);
+
+		}
+
+	</script>
+
+</body>
+</html>
