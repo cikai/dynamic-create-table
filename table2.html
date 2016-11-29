@@ -1,0 +1,44 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta charset=" utf-8"> 
+  <meta name="author" content="http://www.softwhy.com/" /> 
+  <title>蚂蚁部落</title> 
+  <script type="text/javascript">  
+    function add(){  
+      for(var i=0;i<thetable.rows.length;i++) {  
+        var eachRow=thetable.rows[i];  
+        if(eachRow.cells[0].innerHTML==num.value) {  
+          alert("已经存在！");  
+          return ;  
+        }  
+      }  
+      var newTableRow=thetable.insertRow(thetable.rows.length);  
+      newTableRow.insertCell(0).innerHTML=num.value;  
+      newTableRow.insertCell(1).innerHTML=course.value;  
+      newTableRow.insertCell(2).innerHTML=anthor.value;  
+    }
+
+    window.onload=function() { 
+      var oadd=document.getElementById("add"); 
+      var odel=document.getElementById("del"); 
+
+      oadd.onclick=function(){add()} 
+    } 
+  </script> 
+</head> 
+<body> 
+  <table id="thetable" border="1"> 
+    <tr> 
+      <td>分类一</td> 
+      <td>分类二</td> 
+      <td>分类三</td> 
+    </tr> 
+  </table>
+  <br><br>
+  分类一:<input id="num" type="text" value=""><br><br>
+  分类二:<input id="course" type="text" value=""><br><br>
+  分类三:<input id="anthor" type="text" value=""><br><br>
+  <input type="button" value="添加" id="add" /> 
+</body> 
+</html>

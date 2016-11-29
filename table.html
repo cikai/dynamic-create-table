@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script type="text/javascript">
+
+		var rowNum = 2;
+		var columNum = 3;
+
+		function insCell() {
+			var table = document.getElementById('list-table');
+			var colums = table.rows[0].cells.length;
+			var x=document.getElementById('tr1').insertCell(colums)
+			var y=document.getElementById('tr2').insertCell(colums)
+			x.innerHTML="分类"
+			y.innerHTML=columNum;
+			columNum++;
+		}
+
+		function insRow() {
+			var x=document.getElementById('myTable').insertRow(3)
+			var y=x.insertCell(0)
+			var z=x.insertCell(1)
+			y.innerHTML="NEW CELL1"
+			z.innerHTML="NEW CELL2"
+		}
+
+		function addParentNode() {
+			var table = document.getElementById('list-table');
+			var tbody = document.getElementById('list-tbody');
+			var rows = table.rows.length;
+			var colums = table.rows[0].cells.length;
+			console.log("总行数："+rows+"，总列数："+colums);
+			var row = table.insertRow(rows);
+			var x = row.insertCell(0);
+			x.innerHTML = rowNum;
+			rowNum++;
+		}
+
+		function addChildNode() {
+			var table = document.getElementById('list-table');
+			var tbody = document.getElementById('list-tbody');
+			var rows = table.rows.length;
+			var colums = table.rows[0].cells.length;
+			var row = table.insertRow(3).insertCell(0).html("").insertCell(1).html("").insertCell(2).html("");
+			row.innerHTML = "test"
+
+		}
+	</script>
+</head>
+<body>
+	<input type="button" name="addParentNode" onclick="addParentNode()" value="增加父节点">
+	<input type="button" name="addChildNode" onclick="addChildNode()" value="增加子节点">
+	<hr>
+	<table border="1" id="list-table">
+		<tbody id="list-tbody">
+			<tr id="tr1">
+				<th>分类一</th>
+				<th>分类二</th>
+			</tr>
+			<tr id="tr2">
+				<td>1</td>
+				<td>2</td>
+			</tr>
+		</tbody>
+	</table>
+	<br />
+	<input type="button" onclick="insCell()" value="插入单元">
+	<hr>
+	<table id="myTable" border="1">
+		<tr>
+			<td>Row1 cell1</td>
+			<td>Row1 cell2</td>
+		</tr>
+		<tr>
+			<td>Row2 cell1</td>
+			<td>Row2 cell2</td>
+		</tr>
+		<tr>
+			<td>Row3 cell1</td>
+			<td>Row3 cell2</td>
+		</tr>
+	</table>
+	<br />
+	<input type="button" onclick="insRow()" value="插入行">
+</body>
+</html>
